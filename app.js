@@ -108,3 +108,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+
+// ===== ADICIONAR NOVA CONVOCAÇÃO =====
+
+document.addEventListener('DOMContentLoaded', () => {
+  const formNovaConvocacao = document.getElementById('form-nova-convocacao');
+
+  if (formNovaConvocacao) {
+    formNovaConvocacao.addEventListener('submit', async function(event) {
+      event.preventDefault(); 
+      
+      const btn = formNovaConvocacao.querySelector('button[type="submit"]');
+      const textOriginal = btn.innerText;
+      btn.innerText = 'Salvando...';
+      btn.disabled = true;
+
+      const nomeAluno = document.getElementById('input-aluno').value;
+      const avaliador = document.getElementById('input-avaliador').value;
+      const dataProva = document.getElementById('input-data').value;
+      const horarioProva = document.getElementById('input-horario').value;
+      const linkSala = document.getElementById('input-link').value;
+
+      const novaConvocacao = {
+        nome_aluno: nomeAluno,
+        avaliador: avaliador,
+        data_prova: dataProva,
+        horario_prova: horarioProva + ':00', // Adiciona os segundos para o formato TIME do Postgres
+        link_sala: linkSala || null
+      };
+
+      await inserirConvocacaoNoBanco(novaConvocacao);
+      
+      btn.innerText = textOriginal;
+      btn.disabled = false;
+    });
+  }
+});
+
+async function inserirConvocacaoNoBanco(dados) {
+  const { data, error } = await supabaseClient
+    .from('convocacoes')
+    .insert([dados])
+    .select();
+
+  if (error) {
+    console.error('Erro ao adicionar:', error.message);
+    alert('Ocorreu um erro ao adicionar: ' + error.message);
+  } else {
+    alert('Convocação adicionada com sucesso!');
+    document.getElementById('form-nova-convocacao').reset();
+    fetchConvocacoes(); 
+  }
+}

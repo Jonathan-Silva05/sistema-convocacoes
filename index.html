@@ -314,6 +314,44 @@
 
   <!-- Conteúdo Principal -->
   <main>
+
+    <!-- Formulário para Adicionar Nova Convocação -->
+    <section class="add-section" aria-label="Adicionar Nova Convocação" style="background-color: var(--card-bg, #1E293B); padding: 1.5rem; border-radius: 12px; margin-bottom: 1.75rem; border: 1px solid var(--border-color, #334155); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+      <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #F8FAFC;">Adicionar Nova Convocação</h2>
+      <form id="form-nova-convocacao" style="display: flex; flex-direction: column; gap: 1rem;">
+        
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <label for="input-aluno" style="font-size: 0.875rem; color: #CBD5E1; font-weight: 500;">Nome do(a) Aluno(a):</label>
+          <input type="text" id="input-aluno" required style="padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color, #475569); background-color: rgba(15, 23, 42, 0.5); color: #F8FAFC; outline: none;">
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <label for="input-avaliador" style="font-size: 0.875rem; color: #CBD5E1; font-weight: 500;">Nome do Avaliador:</label>
+          <input type="text" id="input-avaliador" required style="padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color, #475569); background-color: rgba(15, 23, 42, 0.5); color: #F8FAFC; outline: none;">
+        </div>
+
+        <div style="display: flex; gap: 1rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
+            <label for="input-data" style="font-size: 0.875rem; color: #CBD5E1; font-weight: 500;">Data da Prova:</label>
+            <input type="date" id="input-data" required style="padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color, #475569); background-color: rgba(15, 23, 42, 0.5); color: #F8FAFC; outline: none; width: 100%; box-sizing: border-box;">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; flex: 1;">
+            <label for="input-horario" style="font-size: 0.875rem; color: #CBD5E1; font-weight: 500;">Horário:</label>
+            <input type="time" id="input-horario" required style="padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color, #475569); background-color: rgba(15, 23, 42, 0.5); color: #F8FAFC; outline: none; width: 100%; box-sizing: border-box;">
+          </div>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+          <label for="input-link" style="font-size: 0.875rem; color: #CBD5E1; font-weight: 500;">Link da Sala Virtual:</label>
+          <input type="url" id="input-link" style="padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color, #475569); background-color: rgba(15, 23, 42, 0.5); color: #F8FAFC; outline: none;">
+        </div>
+
+        <button type="submit" style="margin-top: 0.5rem; padding: 0.875rem; background-color: #3B82F6; color: white; font-weight: 600; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.2s;">
+          Salvar Convocação
+        </button>
+      </form>
+    </section>
+
     <!-- Barra de Pesquisa Larga -->
     <section class="search-section" aria-label="Pesquisar candidatos">
       <div class="search-wrapper">
@@ -331,7 +369,7 @@
 
     <!-- Indicador de Resultados / Status -->
     <div class="results-info">
-      <span class="results-count">Sessões agendadas: <strong>2 alunos</strong></span>
+      <span class="results-count">Sessões agendadas: <strong> ... </strong></span>
       <span class="status-tag">Banca Ativa</span>
     </div>
 
