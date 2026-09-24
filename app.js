@@ -1,11 +1,11 @@
 const supabaseUrl = 'https://elffejhgusoajgpoxzic.supabase.co';
 const supabaseKey = 'sb_publishable_-27NDXUj1fQ99ypZ0hhebQ_yi_vLCOP';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 let allConvocacoes = [];
 
 async function fetchConvocacoes() {
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
     .from('convocacoes')
     .select('*')
     .order('data_prova', { ascending: true })
